@@ -6,4 +6,5 @@
 *.json text eol=crlf
 *.md text eol=crlf
 *.yml text eol=crlf
+LICENSE text eol=crlf
 *.zip binary
