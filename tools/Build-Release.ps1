@@ -25,6 +25,7 @@ function Get-GrlRuntimeRelativeFiles {
         'Start-GameRuntimeLibrary.ps1',
         'GameRuntimeLibrary.cmd',
         'README.md',
+        'LICENSE',
         'THIRD-PARTY-NOTICES.md',
         'CHANGELOG.md',
         'docs\SECURITY.md',

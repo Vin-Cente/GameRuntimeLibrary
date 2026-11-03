@@ -352,6 +352,14 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\Test-Quality.ps1
 
 修改文档、模块或配置后，发布锁会与实际文件哈希不一致，需要重新构建发布包；开发期可用 `-Mode Development` 重新生成 `config\release-lock.ps1`。
 
+## 参与贡献
+
+欢迎提交 Issue 和 Pull Request。报告问题时请附上 Windows 版本、PowerShell 版本、执行的菜单/命令、组件名称和日志片段；提交代码前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+## 许可证
+
+本项目采用 [MIT 许可证](LICENSE)。
+
 ## 变更记录
 
 版本历史与未发布变更见 [CHANGELOG.md](CHANGELOG.md)。

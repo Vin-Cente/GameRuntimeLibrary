@@ -1,0 +1,48 @@
+name: 功能建议
+description: 建议新的组件、平台或交互改进
+title: "[建议]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请说明使用场景和期望结果。涉及新组件时，请提供官方下载地址与官方域名，
+        本项目不接受第三方镜像或散装 DLL。
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 使用场景 / 当前问题
+      description: 这个建议解决什么实际问题？
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 期望方案
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 备选方案
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息
+      description: 官方链接、截图、参考实现等
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 确认
+      options:
+        - label: 我已搜索现有 Issue，未找到重复建议
+          required: true
