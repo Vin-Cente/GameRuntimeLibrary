@@ -8,49 +8,55 @@ permissions:
   contents: read
 
 jobs:
-  test:
-    name: Test / ${{ matrix.name }}
+  windows-powershell:
+    name: Windows PowerShell 5.1
     runs-on: windows-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: Windows PowerShell 5.1
-            shell: powershell
-          - name: PowerShell 7
-            shell: pwsh
-
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: powershell
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install NuGet provider
-        shell: ${{ matrix.shell }}
         run: Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Confirm:$false
 
       - name: Install PSScriptAnalyzer
-        shell: ${{ matrix.shell }}
         run: |
           Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -ErrorAction SilentlyContinue
           Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser -SkipPublisherCheck -Confirm:$false
 
-      # Pester 3.4 的断言依赖 Windows PowerShell 5.1；在 pwsh 7 下 Should Throw 等会误报。
       - name: Install Pester 3.4.0
-        if: matrix.shell == 'powershell'
-        shell: ${{ matrix.shell }}
-        run: |
-          # windows-latest 自带 Pester 3.4（Windows PowerShell 5.1）与其他版本（pwsh）；
-          # 测试用 Pester 3 语法编写，这里显式固定版本，避免加载到 Pester 5。
-          Install-Module -Name Pester -RequiredVersion 3.4.0 -Force -Scope CurrentUser -SkipPublisherCheck -Confirm:$false
+        run: Install-Module -Name Pester -RequiredVersion 3.4.0 -Force -Scope CurrentUser -SkipPublisherCheck -Confirm:$false
 
       - name: Static quality checks
-        shell: ${{ matrix.shell }}
         run: ./tools/Test-Quality.ps1
 
       - name: Pester tests
-        if: matrix.shell == 'powershell'
-        shell: ${{ matrix.shell }}
         run: |
           # Run-Tests.ps1 会显式挑选 Pester 3.x；这里先固定版本，避免 runner 上同时存在 Pester 5。
           Import-Module Pester -RequiredVersion 3.4.0 -Force
           ./tests/Run-Tests.ps1
+
+  pwsh:
+    name: PowerShell 7
+    runs-on: windows-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install NuGet provider
+        run: Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Confirm:$false
+
+      - name: Install PSScriptAnalyzer
+        run: |
+          Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -ErrorAction SilentlyContinue
+          Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser -SkipPublisherCheck -Confirm:$false
+
+      - name: Static quality checks
+        run: ./tools/Test-Quality.ps1
