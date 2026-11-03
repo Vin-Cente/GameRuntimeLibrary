@@ -2,6 +2,8 @@
 
 GameRuntimeLibrary 是面向 Windows 10/11 的 PowerShell 游戏运行库安装工具。它只从 Microsoft、NVIDIA 和 OpenAL 官方地址下载安装包，先校验文件大小、SHA-256 和 Authenticode 发布者，再按统一顺序静默安装。
 
+项目地址：[GitHub](https://github.com/Vin-Cente/GameRuntimeLibrary) · [Gitee](https://gitee.com/Vin_Cente/GameRuntimeLibrary)
+
 ## 它能做什么 / 它不做什么
 
 它可以：
