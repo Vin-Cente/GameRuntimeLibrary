@@ -19,23 +19,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install NuGet provider
-        run: Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Confirm:$false
-
+      # 直接下载 nupkg 并解压，避免 runner 上 NuGet / PowerShellGet 的差异。
       - name: Install PSScriptAnalyzer
         run: |
-          Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -ErrorAction SilentlyContinue
-          Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser -SkipPublisherCheck -Confirm:$false
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          $dest = Join-Path $env:RUNNER_TEMP 'psmodules'
+          New-Item -ItemType Directory -Path $dest -Force | Out-Null
+          $zip = Join-Path $env:RUNNER_TEMP 'PSScriptAnalyzer.zip'
+          Invoke-WebRequest -Uri 'https://www.powershellgallery.com/api/v2/package/PSScriptAnalyzer/1.25.0' -OutFile $zip -UseBasicParsing
+          Expand-Archive -Path $zip -DestinationPath (Join-Path $dest 'PSScriptAnalyzer') -Force
+          "PSModulePath=$dest;$env:PSModulePath" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
       - name: Install Pester 3.4.0
-        run: Install-Module -Name Pester -RequiredVersion 3.4.0 -Force -Scope CurrentUser -SkipPublisherCheck -Confirm:$false
+        run: |
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          $dest = Join-Path $env:RUNNER_TEMP 'psmodules'
+          New-Item -ItemType Directory -Path $dest -Force | Out-Null
+          $zip = Join-Path $env:RUNNER_TEMP 'Pester.zip'
+          Invoke-WebRequest -Uri 'https://www.powershellgallery.com/api/v2/package/Pester/3.4.0' -OutFile $zip -UseBasicParsing
+          Expand-Archive -Path $zip -DestinationPath (Join-Path $dest 'Pester') -Force
 
       - name: Static quality checks
         run: ./tools/Test-Quality.ps1
 
       - name: Pester tests
         run: |
-          # Run-Tests.ps1 会显式挑选 Pester 3.x；这里先固定版本，避免 runner 上同时存在 Pester 5。
+          # Run-Tests.ps1 会显式挑选 Pester 3.x。
           Import-Module Pester -RequiredVersion 3.4.0 -Force
           ./tests/Run-Tests.ps1
 
@@ -50,13 +59,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install NuGet provider
-        run: Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Confirm:$false
-
       - name: Install PSScriptAnalyzer
         run: |
-          Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -ErrorAction SilentlyContinue
-          Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser -SkipPublisherCheck -Confirm:$false
+          $dest = Join-Path $env:RUNNER_TEMP 'psmodules'
+          New-Item -ItemType Directory -Path $dest -Force | Out-Null
+          $zip = Join-Path $env:RUNNER_TEMP 'PSScriptAnalyzer.zip'
+          Invoke-WebRequest -Uri 'https://www.powershellgallery.com/api/v2/package/PSScriptAnalyzer/1.25.0' -OutFile $zip -UseBasicParsing
+          Expand-Archive -Path $zip -DestinationPath (Join-Path $dest 'PSScriptAnalyzer') -Force
+          "PSModulePath=$dest;$env:PSModulePath" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
       - name: Static quality checks
         run: ./tools/Test-Quality.ps1
