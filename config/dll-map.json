@@ -1,0 +1,62 @@
+﻿{
+  "schemaVersion": 1,
+  "note": "这些 DLL 或程序集由对应官方运行库安装包提供，本项目不会单独下载或复制散装 DLL。",
+  "items": [
+    {
+      "componentId": "dotnet35",
+      "files": [ "mscorwks.dll", "mscorlib.dll", "System.dll" ]
+    },
+    {
+      "componentId": "dotnet481",
+      "files": [ "clr.dll", "mscorlib.dll", "System.dll" ]
+    },
+    {
+      "componentId": "vjsharp20",
+      "files": [ "vjslib.dll", "vjscor.dll", "vjsnativ.dll" ]
+    },
+    {
+      "componentId": "vcredist2005",
+      "files": [ "msvcp80.dll", "msvcr80.dll", "mfc80.dll" ]
+    },
+    {
+      "componentId": "vcredist2008",
+      "files": [ "msvcp90.dll", "msvcr90.dll", "mfc90.dll" ]
+    },
+    {
+      "componentId": "vcredist2010",
+      "files": [ "msvcp100.dll", "msvcr100.dll", "mfc100.dll" ]
+    },
+    {
+      "componentId": "vcredist2012",
+      "files": [ "msvcp110.dll", "msvcr110.dll", "mfc110.dll" ]
+    },
+    {
+      "componentId": "vcredist2013",
+      "files": [ "msvcp120.dll", "msvcr120.dll", "mfc120.dll" ]
+    },
+    {
+      "componentId": "vcredist2015-2022",
+      "files": [ "msvcp140.dll", "vcruntime140.dll", "vcruntime140_1.dll", "concrt140.dll", "vccorlib140.dll" ]
+    },
+    {
+      "componentId": "directx9",
+      "files": [ "d3dx9_43.dll", "xinput1_3.dll", "xaudio2_7.dll", "d3dx10_43.dll", "d3dx11_43.dll" ]
+    },
+    {
+      "componentId": "xna40",
+      "files": [ "Microsoft.Xna.Framework.dll", "Microsoft.Xna.Framework.Game.dll", "Microsoft.Xna.Framework.Graphics.dll", "Microsoft.Xna.Framework.Content.dll", "xnasound.dll" ]
+    },
+    {
+      "componentId": "openal11",
+      "files": [ "OpenAL32.dll" ]
+    },
+    {
+      "componentId": "physx",
+      "files": [ "PhysXCore.dll", "PhysXLoader.dll", "PhysXCooking.dll" ]
+    },
+    {
+      "componentId": "directplay",
+      "files": [ "dpnet.dll", "dpnhpast.dll", "dpwsockx.dll" ]
+    }
+  ]
+}

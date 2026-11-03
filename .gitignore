@@ -1,0 +1,5 @@
+Windows */packages/*
+!Windows */packages/README.md
+dist/*.zip
+dist/*.tmp.zip
+*.part

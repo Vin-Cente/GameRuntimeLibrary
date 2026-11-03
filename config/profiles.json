@@ -1,0 +1,32 @@
+﻿{
+  "schemaVersion": 1,
+  "profiles": [
+    {
+      "id": "Windows11-x64",
+      "displayName": "Windows 11 x64",
+      "osName": "Windows 11",
+      "architecture": "x64",
+      "minimumBuild": 22000,
+      "recommendedBuild": 22000,
+      "architectures": [ "x86", "x64", "any" ]
+    },
+    {
+      "id": "Windows10-x64",
+      "displayName": "Windows 10 x64",
+      "osName": "Windows 10",
+      "architecture": "x64",
+      "minimumBuild": 10240,
+      "recommendedBuild": 19045,
+      "architectures": [ "x86", "x64", "any" ]
+    },
+    {
+      "id": "Windows10-x86",
+      "displayName": "Windows 10 x86",
+      "osName": "Windows 10",
+      "architecture": "x86",
+      "minimumBuild": 10240,
+      "recommendedBuild": 19045,
+      "architectures": [ "x86", "any" ]
+    }
+  ]
+}

@@ -1,0 +1,576 @@
+﻿{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-02T00:00:00+08:00",
+  "officialDomains": [
+    "microsoft.com",
+    "aka.ms",
+    "nvidia.com",
+    "openal.org"
+  ],
+  "components": [
+    {
+      "id": "dotnet35",
+      "displayName": ".NET Framework 3.5",
+      "tier": "Core",
+      "order": 10,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "WindowsFeature",
+        "featureName": "NetFx3"
+      },
+      "detection": {
+        "type": "RegistryValue",
+        "registryView": "Default",
+        "key": "SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v3.5",
+        "name": "Install",
+        "equals": "1"
+      },
+      "packages": []
+    },
+    {
+      "id": "dotnet481",
+      "displayName": ".NET Framework 4.8.1",
+      "tier": "Core",
+      "order": 20,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "Exe",
+        "arguments": [ "/quiet", "/norestart" ]
+      },
+      "detection": {
+        "type": "RegistryMinimum",
+        "registryView": "Default",
+        "key": "SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full",
+        "name": "Release",
+        "minimum": 533320
+      },
+      "packages": [
+        {
+          "id": "dotnet481_any",
+          "architecture": "any",
+          "url": "https://download.microsoft.com/download/4/b/2/cd00d4ed-ebdd-49ee-8a33-eabc3d1030e3/NDP481-x86-x64-AllOS-ENU.exe",
+          "fileName": "dotnet481.exe",
+          "size": 77688504,
+          "sha256": "C0CA2E0C9CD18A24A0A77369A13FAE2C2C4E8BC83355DD24E5DDC00F9D791FE3",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vjsharp20",
+      "displayName": "Microsoft Visual J# 2.0 x86",
+      "tier": "Legacy",
+      "order": 30,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "Exe",
+        "arguments": [ "/q:a", "/r:n" ]
+      },
+      "detection": {
+        "type": "UninstallEntry",
+        "displayNameContains": "Microsoft Visual J# 2.0 Redistributable",
+        "minimumVersion": "2.0.0.0"
+      },
+      "packages": [
+        {
+          "id": "vjsharp20_x86",
+          "architecture": "x86",
+          "url": "https://download.microsoft.com/download/9/a/0/9a01eb1e-fe80-41af-a3f8-ea41220918f7/vjredist.exe",
+          "fileName": "vjredist_x86.exe",
+          "size": 3798912,
+          "sha256": "602587003735BE073198B9D2A0A0BD0FCACC0FFC38601055E941FC926E38C27D",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vcredist2005",
+      "displayName": "Visual C++ 2005 SP1",
+      "tier": "Legacy",
+      "order": 100,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "Exe",
+        "arguments": [ "/Q" ]
+      },
+      "packages": [
+        {
+          "id": "vcredist2005_x86",
+          "architecture": "x86",
+          "url": "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.exe",
+          "fileName": "vc2005_x86.exe",
+          "size": 2710520,
+          "sha256": "8648C5FC29C44B9112FE52F9A33F80E7FC42D10F3B5B42B2121542A13E44ADFD",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "UninstallEntry",
+            "displayNameContains": "Microsoft Visual C++ 2005 Redistributable",
+            "minimumVersion": "8.0.61001",
+            "architectureHint": "x86"
+          }
+        },
+        {
+          "id": "vcredist2005_x64",
+          "architecture": "x64",
+          "url": "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x64.exe",
+          "fileName": "vc2005_x64.exe",
+          "size": 3179000,
+          "sha256": "4487570BD86E2E1AAC29DB2A1D0A91EB63361FCAAC570808EB327CD4E0E2240D",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "UninstallEntry",
+            "displayNameContains": "Microsoft Visual C++ 2005 Redistributable",
+            "minimumVersion": "8.0.61001",
+            "architectureHint": "x64"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vcredist2008",
+      "displayName": "Visual C++ 2008 SP1",
+      "tier": "Legacy",
+      "order": 110,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "Exe",
+        "arguments": [ "/Q" ]
+      },
+      "packages": [
+        {
+          "id": "vcredist2008_x86",
+          "architecture": "x86",
+          "url": "https://download.microsoft.com/download/5/d/8/5d8c65cb-c849-4025-8e95-c3966cafd8ae/vcredist_x86.exe",
+          "fileName": "vc2008_x86.exe",
+          "size": 4483040,
+          "sha256": "8742BCBF24EF328A72D2A27B693CC7071E38D3BB4B9B44DEC42AA3D2C8D61D92",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "UninstallEntry",
+            "displayNameContains": "Microsoft Visual C++ 2008 Redistributable",
+            "minimumVersion": "9.0.30729",
+            "architectureHint": "x86"
+          }
+        },
+        {
+          "id": "vcredist2008_x64",
+          "architecture": "x64",
+          "url": "https://download.microsoft.com/download/5/d/8/5d8c65cb-c849-4025-8e95-c3966cafd8ae/vcredist_x64.exe",
+          "fileName": "vc2008_x64.exe",
+          "size": 5211080,
+          "sha256": "C5E273A4A16AB4D5471E91C7477719A2F45DDADB76C7F98A38FA5074A6838654",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "UninstallEntry",
+            "displayNameContains": "Microsoft Visual C++ 2008 Redistributable",
+            "minimumVersion": "9.0.30729",
+            "architectureHint": "x64"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vcredist2010",
+      "displayName": "Visual C++ 2010 SP1",
+      "tier": "Core",
+      "order": 120,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "Exe",
+        "arguments": [ "/Q" ]
+      },
+      "packages": [
+        {
+          "id": "vcredist2010_x86",
+          "architecture": "x86",
+          "url": "https://download.microsoft.com/download/1/6/5/165255e7-1014-4d0a-b094-b6a430a6bffc/vcredist_x86.exe",
+          "fileName": "vc2010_x86.exe",
+          "size": 8993744,
+          "sha256": "99DCE3C841CC6028560830F7866C9CE2928C98CF3256892EF8E6CF755147B0D8",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "UninstallEntry",
+            "displayNameContains": "Microsoft Visual C++ 2010",
+            "minimumVersion": "10.0.40219",
+            "architectureHint": "x86"
+          }
+        },
+        {
+          "id": "vcredist2010_x64",
+          "architecture": "x64",
+          "url": "https://download.microsoft.com/download/1/6/5/165255e7-1014-4d0a-b094-b6a430a6bffc/vcredist_x64.exe",
+          "fileName": "vc2010_x64.exe",
+          "size": 10277328,
+          "sha256": "F3B7A76D84D23F91957AA18456A14B4E90609E4CE8194C5653384ED38DADA6F3",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "UninstallEntry",
+            "displayNameContains": "Microsoft Visual C++ 2010",
+            "minimumVersion": "10.0.40219",
+            "architectureHint": "x64"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vcredist2012",
+      "displayName": "Visual C++ 2012 Update 4",
+      "tier": "Core",
+      "order": 130,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "Exe",
+        "arguments": [ "/quiet", "/norestart" ]
+      },
+      "packages": [
+        {
+          "id": "vcredist2012_x86",
+          "architecture": "x86",
+          "url": "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe",
+          "fileName": "vc2012_x86.exe",
+          "size": 6554576,
+          "sha256": "B924AD8062EAF4E70437C8BE50FA612162795FF0839479546CE907FFA8D6E386",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "UninstallEntry",
+            "displayNameContains": "Microsoft Visual C++ 2012",
+            "minimumVersion": "11.0.61030",
+            "architectureHint": "x86"
+          }
+        },
+        {
+          "id": "vcredist2012_x64",
+          "architecture": "x64",
+          "url": "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe",
+          "fileName": "vc2012_x64.exe",
+          "size": 7186992,
+          "sha256": "681BE3E5BA9FD3DA02C09D7E565ADFA078640ED66A0D58583EFAD2C1E3CC4064",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "UninstallEntry",
+            "displayNameContains": "Microsoft Visual C++ 2012",
+            "minimumVersion": "11.0.61030",
+            "architectureHint": "x64"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vcredist2013",
+      "displayName": "Visual C++ 2013 Update 5",
+      "tier": "Core",
+      "order": 140,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "Exe",
+        "arguments": [ "/install", "/quiet", "/norestart" ]
+      },
+      "packages": [
+        {
+          "id": "vcredist2013_x86",
+          "architecture": "x86",
+          "url": "https://aka.ms/highdpimfc2013x86enu",
+          "fileName": "vc2013_x86.exe",
+          "size": 6510136,
+          "sha256": "53B605D1100AB0A88B867447BBF9274B5938125024BA01F5105A9E178A3DCDBD",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "UninstallEntry",
+            "displayNameContains": "Microsoft Visual C++ 2013",
+            "minimumVersion": "12.0.40664",
+            "architectureHint": "x86"
+          }
+        },
+        {
+          "id": "vcredist2013_x64",
+          "architecture": "x64",
+          "url": "https://aka.ms/highdpimfc2013x64enu",
+          "fileName": "vc2013_x64.exe",
+          "size": 7200744,
+          "sha256": "A4BBA7701E355AE29C403431F871A537897C363E215CAFE706615E270984F17C",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "UninstallEntry",
+            "displayNameContains": "Microsoft Visual C++ 2013",
+            "minimumVersion": "12.0.40664",
+            "architectureHint": "x64"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vcredist2015-2022",
+      "displayName": "Visual C++ 2015-2022",
+      "tier": "Core",
+      "order": 150,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "Exe",
+        "arguments": [ "/install", "/quiet", "/norestart" ]
+      },
+      "packages": [
+        {
+          "id": "vcredist14_x86",
+          "architecture": "x86",
+          "url": "https://aka.ms/vc14/vc_redist.x86.exe",
+          "fileName": "vc14_x86.exe",
+          "minimumBytes": 6000000,
+          "maximumBytes": 30000000,
+          "hashPolicy": "SignedLatest",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "RegistryMinimum",
+            "registryView": "Registry32",
+            "key": "SOFTWARE\\Microsoft\\VisualStudio\\14.0\\VC\\Runtimes\\x86",
+            "name": "Version",
+            "minimum": "14.0.0.0"
+          }
+        },
+        {
+          "id": "vcredist14_x64",
+          "architecture": "x64",
+          "url": "https://aka.ms/vc14/vc_redist.x64.exe",
+          "fileName": "vc14_x64.exe",
+          "minimumBytes": 10000000,
+          "maximumBytes": 40000000,
+          "hashPolicy": "SignedLatest",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          },
+          "detection": {
+            "type": "RegistryMinimum",
+            "registryView": "Registry64",
+            "key": "SOFTWARE\\Microsoft\\VisualStudio\\14.0\\VC\\Runtimes\\x64",
+            "name": "Version",
+            "minimum": "14.0.0.0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "directx9",
+      "displayName": "DirectX June 2010",
+      "tier": "Core",
+      "order": 200,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "SelfExtractingBundle",
+        "extractArguments": [ "/Q", "/T:{ExtractPath}" ],
+        "innerFile": "DXSETUP.exe",
+        "innerSha256": "8F47D7121EF6532AD9AD9901E44E237F5C30448B752028C58A9D19521414E40D",
+        "innerPublisherContains": "Microsoft Corporation",
+        "arguments": [ "/silent" ]
+      },
+      "detection": {
+        "type": "FileAny",
+        "files": [ "%SystemRoot%\\System32\\d3dx9_43.dll", "%SystemRoot%\\SysWOW64\\d3dx9_43.dll" ]
+      },
+      "packages": [
+        {
+          "id": "directx9_any",
+          "architecture": "any",
+          "url": "https://download.microsoft.com/download/8/4/a/84a35bf1-dafe-4ae8-82af-ad2ae20b6b14/directx_Jun2010_redist.exe",
+          "fileName": "directx_jun2010.exe",
+          "size": 100275120,
+          "sha256": "053F76DCBB28802E23341B6A787E3B0791C0FA5C8D4D011B1044172DBF89C73B",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "xna40",
+      "displayName": "Microsoft XNA Framework 4.0",
+      "tier": "Legacy",
+      "order": 210,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "Msi",
+        "arguments": [ "/qn", "/norestart" ]
+      },
+      "detection": {
+        "type": "UninstallEntry",
+        "displayNameContains": "Microsoft XNA Framework Redistributable 4.0",
+        "minimumVersion": "4.0.0.0"
+      },
+      "packages": [
+        {
+          "id": "xna40_any",
+          "architecture": "any",
+          "url": "https://download.microsoft.com/download/a/c/2/ac2c903b-e6e8-42c2-9fd7-bebac362a930/xnafx40_redist.msi",
+          "fileName": "xnafx40_redist.msi",
+          "size": 7054848,
+          "sha256": "47260420773A20443FB1E38A89B7F39C5237A80A842DE598E6C8F7F90A3BBD6D",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "Microsoft Corporation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openal11",
+      "displayName": "OpenAL 1.1",
+      "tier": "Legacy",
+      "order": 220,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "ArchiveBundle",
+        "innerFile": "oalinst.exe",
+        "innerSha256": "B8F39714D41E009F75EFB183C37100F2CBABB71784BBD243BE881AC5B42D86FD",
+        "innerPublisherContains": "Creative Labs",
+        "arguments": [ "/silent" ]
+      },
+      "detection": {
+        "type": "FileAny",
+        "files": [ "%SystemRoot%\\System32\\OpenAL32.dll", "%SystemRoot%\\SysWOW64\\OpenAL32.dll" ]
+      },
+      "packages": [
+        {
+          "id": "openal11_any",
+          "architecture": "any",
+          "url": "https://openal.org/downloads/oalinst.zip",
+          "fileName": "oalinst.zip",
+          "size": 590434,
+          "sha256": "D165BCB7628FD950D14847585468CC11943B2A1DA92A59A839D397C68F9D4B06",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": false,
+            "publisherContains": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "physx",
+      "displayName": "NVIDIA PhysX 9.21.0713",
+      "tier": "Legacy",
+      "order": 230,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "Exe",
+        "arguments": [ "/s" ]
+      },
+      "detection": {
+        "type": "UninstallEntry",
+        "displayNameContains": "NVIDIA PhysX System Software",
+        "minimumVersion": "9.21.0713"
+      },
+      "packages": [
+        {
+          "id": "physx_any",
+          "architecture": "any",
+          "url": "https://us.download.nvidia.com/Windows/9.21.0713/PhysX_9.21.0713_SystemSoftware.exe",
+          "fileName": "PhysX_9.21.0713_SystemSoftware.exe",
+          "size": 27152680,
+          "sha256": "26D62C5C347C15CB27C3BE92BF10706113511B48B28AECC09F61EE58B3B62778",
+          "hashPolicy": "Fixed",
+          "signature": {
+            "required": true,
+            "publisherContains": "NVIDIA Corporation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "directplay",
+      "displayName": "DirectPlay 旧版组件",
+      "tier": "Legacy",
+      "order": 300,
+      "applicability": {
+        "architectures": [ "x86", "x64" ]
+      },
+      "installer": {
+        "type": "WindowsFeature",
+        "featureName": "DirectPlay"
+      },
+      "detection": {
+        "type": "WindowsFeature",
+        "featureName": "DirectPlay"
+      },
+      "packages": []
+    }
+  ]
+}
